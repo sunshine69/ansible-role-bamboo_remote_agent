@@ -1,0 +1,28 @@
+- name: create bamboo user
+  user:
+    name: bamboo
+
+- name: download bamboo agent
+  get_url:
+    url: https://{{ bamboo_server }}/agentServer/agentInstaller/{{ bamboo_jar }}
+    dest: /home/bamboo/{{ bamboo_jar }}
+    owner: bamboo
+    group: bamboo
+
+- name: create bamboo service configuration file
+  template:
+    src: bamboo-agent.j2
+    dest: /etc/default/bamboo-agent
+
+- name: create systemd unit file
+  copy:
+    src: bamboo-agent.service
+    dest: /etc/systemd/system/bamboo-agent.service
+  notify: reload systemctl
+
+- meta: flush_handlers
+
+- name: enable bamboo agent to start on boot
+  service:
+    name: bamboo-agent
+    enabled: yes

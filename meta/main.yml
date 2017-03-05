@@ -1,0 +1,8 @@
+galaxy_info:
+  author: Will Thames
+  description: Bamboo Remote Agent role
+  company: XVT
+
+  min_ansible_version: 2.2
+
+dependencies: []

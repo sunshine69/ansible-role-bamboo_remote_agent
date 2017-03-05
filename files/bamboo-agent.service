@@ -1,0 +1,12 @@
+[Unit]
+Description=Bamboo Agent Service
+After=network.service
+
+[Service]
+EnvironmentFile=/etc/default/bamboo-agent
+ExecStart=/usr/bin/java -jar $BAMBOO_JAR $BAMBOO_URL -t $BAMBOO_TOKEN
+ExecStop=/usr/bin/pkill -f $BAMBOO_JAR
+User=bamboo
+
+[Install]
+WantedBy=multi-user.target
