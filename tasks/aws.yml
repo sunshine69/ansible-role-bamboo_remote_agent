@@ -1,0 +1,21 @@
+- name: ensure .aws directory exists
+  file:
+    name: ~bamboo/.aws
+    state: directory
+    owner: bamboo
+    group: bamboo
+
+- name: install aws configuration
+  copy:
+    src: aws.config
+    dest: ~bamboo/.aws/config
+    owner: bamboo
+    group: bamboo
+
+- name: install assumerole.py
+  copy:
+    src: assumerole.py
+    dest: ~bamboo/assumerole.py
+    owner: bamboo
+    group: bamboo
+    mode: 0755

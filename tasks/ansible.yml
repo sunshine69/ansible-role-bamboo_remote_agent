@@ -1,0 +1,9 @@
+- name: Add Ansible ppa
+  apt_repository:
+    repo: 'ppa:ansible/ansible'
+
+- name: install ansible
+  apt:
+    name: ansible={{ bamboo_ansible_version }}*
+    state: present
+    update_cache: yes
