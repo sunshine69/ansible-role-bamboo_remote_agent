@@ -7,3 +7,19 @@
     name: ansible={{ bamboo_ansible_version }}*
     state: present
     update_cache: yes
+
+- name: make vault directory
+  file:
+    name: ~bamboo/.ansible/vault/password
+    state: directory
+    owner: bamboo
+    group: bamboo
+    mode: 0700
+    recurse: true
+
+- name: copy vault file
+  copy:
+    src: ~/.ansible/vault/password/xvt-dpe-infrastructure
+    dest: ~bamboo/.ansible/vault/password/xvt-dpe-infrastructure
+    owner: bamboo
+    group: bamboo
