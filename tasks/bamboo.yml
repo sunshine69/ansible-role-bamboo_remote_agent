@@ -2,6 +2,7 @@
   user:
     name: bamboo
     shell: /bin/bash
+    home: /home/bamboo
 
 - name: download bamboo agent
   get_url:

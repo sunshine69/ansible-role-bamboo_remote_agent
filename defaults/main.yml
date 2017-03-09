@@ -1,3 +1,2 @@
-bamboo_agent_version: "5.14.4.1"
 bamboo_jar: atlassian-bamboo-agent-installer-{{ bamboo_agent_version}}.jar
 bamboo_ansible_version: "2.2.1.0"
