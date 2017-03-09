@@ -1,8 +1,10 @@
 - name: create bamboo user
   user:
     name: bamboo
-    shell: /bin/bash
+    shell: /sbin/nologin
     home: /home/bamboo
+    createhome: yes
+    comment: Bamboo Remote Agent user
 
 - name: download bamboo agent
   get_url:
