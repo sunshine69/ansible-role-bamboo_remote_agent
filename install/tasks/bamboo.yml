@@ -12,6 +12,11 @@
     createhome: yes
     comment: Bamboo Remote Agent user
 
+- name: install packages
+  apt:
+    name: "{{ item }}"
+  with_items: "{{ bamboo_apt_packages }}"
+
 - name: download bamboo agent
   get_url:
     url: https://{{ bamboo_server }}/agentServer/agentInstaller/{{ bamboo_jar }}
