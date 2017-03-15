@@ -1,0 +1,20 @@
+---
+- name: Create a role for Bamboo
+  iam:
+    region: "{{ region }}"
+    profile: "{{ aws_account_name }}"
+    iam_type: role
+    name: bamboo_s3_push
+    trust_policy: "{{ lookup('template', 'bamboo-trust-policy.json') }}"
+    state: present
+  register: registered_iam_role
+
+- name: Assign Bamboo S3 push policy to role
+  iam_policy:
+    region: "{{ region }}"
+    profile: "{{ aws_account_name }}"
+    iam_type: role
+    iam_name: "bamboo_s3_push"
+    policy_name: "bamboo_s3_push"
+    state: present
+    policy_json: "{{ lookup('template', 'bamboo_s3_push.json') }}"
