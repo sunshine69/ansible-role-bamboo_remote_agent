@@ -1,4 +1,24 @@
----
+- name: Create AMIBuilder role for Bamboo
+  iam_role:
+    region: "{{ region }}"
+    profile: "{{ aws_account_name }}"
+    name: AMIBuilder
+    state: present
+    managed_policies:
+      - AmazonESReadOnlyAccess
+      - IAMUserSSHKeys
+    assume_role_policy_document: "{{ lookup('template', 'bamboo-trust-policy.json') }}"
+
+- name: Assign ec2-autoscaling-with-instance-profile policy to AMIBuilder
+  iam_policy:
+    region: "{{ region }}"
+    profile: "{{ aws_account_name }}"
+    iam_type: role
+    iam_name: "AMIBuilder"
+    policy_name: "ec2-autoscaling-with-instance-profile"
+    state: present
+    policy_json: "{{ lookup('template', 'AMIBuilder.json') }}"
+
 - name: Create a role for Bamboo
   iam:
     region: "{{ region }}"
@@ -7,7 +27,6 @@
     name: bamboo_s3_push
     trust_policy: "{{ lookup('template', 'bamboo-trust-policy.json') }}"
     state: present
-  register: registered_iam_role
 
 - name: Assign Bamboo S3 push policy to role
   iam_policy:
