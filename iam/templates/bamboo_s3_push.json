@@ -9,5 +9,10 @@
         "arn:aws:s3:::{{ s3_buckets.c_infra_build.name}}"
         ]
     },
+    {
+      "Effect": "Allow",
+      "Action": "lambda:UpdateFunctionCode",
+      "Resource": "*"
+    }
   ]
 }
