@@ -1,3 +1,9 @@
+- name: install bamboo agent extra packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ bamboo_apt_packages }}"
+
 - name: create bamboo user
   user:
     name: bamboo
