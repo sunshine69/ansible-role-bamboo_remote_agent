@@ -4,4 +4,3 @@ bamboo_apt_packages:
   - zip
   - libyaml-dev
   - python-dev
-  - jq
