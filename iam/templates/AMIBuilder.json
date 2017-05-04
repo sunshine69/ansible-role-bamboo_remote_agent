@@ -36,6 +36,16 @@
         "arn:aws:s3:::{{ s3_buckets.c_infra_build.name}}/*",
         "arn:aws:s3:::{{ s3_buckets.c_infra_build.name}}"
         ]
-    },
+    }{% if aws[aws_account_name].ami_destinations| default([]) %},
+    {
+        "Action": "sts:AssumeRole",
+        "Resource": [
+          {% for account in aws[aws_account_name].ami_destinations %}
+          {{ aws[account].id | regex_replace('(.*)', '"arn:aws:iam::\1:role/AMIBuilder"') }}{{ "," if not loop.last else "" }}
+          {% endfor %}
+        ],
+        "Effect": "Allow"
+    }
+{% endif %}
   ]
 }
