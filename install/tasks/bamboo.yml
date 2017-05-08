@@ -23,6 +23,7 @@
     dest: /home/bamboo/{{ bamboo_jar }}
     owner: bamboo
     group: bamboo
+    timeout: 30
 
 - name: create bamboo service configuration file
   template:
