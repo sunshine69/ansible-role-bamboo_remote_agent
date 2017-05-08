@@ -4,3 +4,6 @@ bamboo_apt_packages:
   - zip
   - libyaml-dev
   - python-dev
+  - nodejs
+  - nodejs-legacy
+  - npm
