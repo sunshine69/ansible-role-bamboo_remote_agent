@@ -1,12 +1,8 @@
-- name: Add Ansible ppa
-  apt_repository:
-    repo: 'ppa:ansible/ansible'
-
 - name: install ansible
-  apt:
-    name: ansible={{ bamboo_ansible_version }}*
+  pip:
+    name: ansible
     state: present
-    update_cache: yes
+    version: "{{ bamboo_ansible_version }}"
 
 - name: make vault directory
   file:
