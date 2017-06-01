@@ -4,7 +4,8 @@
     {
       "Effect": "Allow",
       "Principal": {
-        "AWS": "arn:aws:iam::{{ aws.xvt_atlassian.id }}:root"
+        "AWS": "arn:aws:iam::{{ aws.xvt_atlassian.id }}:root",
+        "Service": "ec2.amazonaws.com"
       },
       "Action": "sts:AssumeRole"
     }
