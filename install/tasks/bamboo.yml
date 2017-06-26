@@ -30,6 +30,20 @@
     src: bamboo-agent.j2
     dest: /etc/default/bamboo-agent
 
+- name: ensure bamboo agent home directory exists
+  file:
+    state: directory
+    path: /home/bamboo/bamboo-agent-home
+    owner: bamboo
+    group: bamboo
+
+- name: create bamboo capabilities file
+  copy:
+    src: bamboo-capabilities.properties
+    dest: /home/bamboo/bamboo-agent-home/bin
+    owner: bamboo
+    group: bamboo
+
 - name: create systemd unit file
   copy:
     src: bamboo-agent.service
@@ -37,6 +51,7 @@
   notify: reload systemctl
 
 - meta: flush_handlers
+
 
 - name: enable bamboo agent to start on boot
   service:
