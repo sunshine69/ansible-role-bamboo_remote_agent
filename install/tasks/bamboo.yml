@@ -33,14 +33,14 @@
 - name: ensure bamboo agent home directory exists
   file:
     state: directory
-    path: /home/bamboo/bamboo-agent-home
+    path: /home/bamboo/bamboo-agent-home/bin
     owner: bamboo
     group: bamboo
 
 - name: create bamboo capabilities file
   copy:
     src: bamboo-capabilities.properties
-    dest: /home/bamboo/bamboo-agent-home/bin
+    dest: /home/bamboo/bamboo-agent-home/bin/bamboo-capabilities.properties
     owner: bamboo
     group: bamboo
 
