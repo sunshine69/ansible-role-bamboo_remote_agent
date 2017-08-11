@@ -1,3 +1,4 @@
+- include: docker.yml
 - include: bamboo.yml
 - include: ansible.yml
 - include: aws.yml

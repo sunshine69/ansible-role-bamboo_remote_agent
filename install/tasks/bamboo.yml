@@ -11,11 +11,18 @@
     home: /home/bamboo
     createhome: yes
     comment: Bamboo Remote Agent user
+    groups:
+      - docker
 
 - name: install packages
   apt:
     name: "{{ item }}"
   with_items: "{{ bamboo_apt_packages }}"
+
+- name: install flake8
+  pip:
+    name: flake8
+    state: present
 
 - name: download bamboo agent
   get_url:
