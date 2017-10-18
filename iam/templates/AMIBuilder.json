@@ -22,11 +22,6 @@
       "Resource": "*"
     },
     {
-      "Effect": "Allow",
-      "Action": "rds:*",
-      "Resource": "*"
-    },
-    {
       "Effect":"Allow",
       "Action":"iam:PassRole",
       "Resource":"arn:aws:iam::{{ aws[aws_account_name].id }}:role/vpc-*"

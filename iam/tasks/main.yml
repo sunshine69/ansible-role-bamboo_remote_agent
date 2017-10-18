@@ -19,6 +19,24 @@
     state: present
     policy_json: "{{ lookup('template', 'AMIBuilder.json') }}"
 
+- name: Create InfraBuilder role for Bamboo
+  iam_role:
+    region: "{{ region }}"
+    profile: "{{ aws_account_name }}"
+    name: InfraBuilder
+    state: present
+    assume_role_policy_document: "{{ lookup('template', 'bamboo-trust-policy.json') }}"
+
+- name: Assign create-and-destroy-environments policy to InfraBuilder
+  iam_policy:
+    region: "{{ region }}"
+    profile: "{{ aws_account_name }}"
+    iam_type: role
+    iam_name: "InfraBuilder"
+    policy_name: "create-and-destroy-environments"
+    state: present
+    policy_json: "{{ lookup('template', 'InfraBuilder.json') }}"
+
 - name: Create a role for Bamboo
   iam:
     region: "{{ region }}"

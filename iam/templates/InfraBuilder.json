@@ -1,0 +1,17 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+         "ec2:*",
+         "elasticfilesystem:*",
+         "elasticloadbalancing:*",
+         "rds:*",
+         "route53:*",
+         "s3:*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
