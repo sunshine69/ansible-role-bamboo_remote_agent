@@ -1,4 +1,4 @@
-- include: docker.yml
-- include: bamboo.yml
-- include: ansible.yml
-- include: aws.yml
+- import_tasks: docker.yml
+- import_tasks: bamboo.yml
+- import_tasks: ansible.yml
+- import_tasks: aws.yml
