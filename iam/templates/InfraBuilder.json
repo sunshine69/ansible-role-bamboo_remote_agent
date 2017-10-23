@@ -6,6 +6,9 @@
          "ec2:*",
          "elasticfilesystem:*",
          "elasticloadbalancing:*",
+         "iam:ListUsers",
+         "iam:ListGroups",
+         "lambda:*",
          "rds:*",
          "route53:*",
          "s3:*"
