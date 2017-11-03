@@ -1,4 +1,3 @@
-- import_tasks: docker.yml
 - import_tasks: bamboo.yml
 - import_tasks: ansible.yml
 - import_tasks: aws.yml
