@@ -1,5 +1,5 @@
 bamboo_jar: atlassian-bamboo-agent-installer-{{ bamboo_agent_version}}.jar
-bamboo_ansible_version: "2.4.0"
+bamboo_ansible_version: "2.4.1"
 bamboo_apt_packages:
   - zip
   - libyaml-dev
