@@ -37,6 +37,16 @@
     state: present
     policy_json: "{{ lookup('template', 'InfraBuilder.json') }}"
 
+- name: Create ContainerBuilder role for Bamboo
+  iam_role:
+    region: "{{ region }}"
+    profile: "{{ aws_account_name }}"
+    name: ContainerBuilder
+    state: present
+    managed_policies:
+      - AmazonEC2ContainerRegistryPowerUser
+    assume_role_policy_document: "{{ lookup('template', 'bamboo-trust-policy.json') }}"
+
 - name: Create a role for Bamboo
   iam:
     region: "{{ region }}"
