@@ -65,3 +65,22 @@
     policy_name: "bamboo_s3_push"
     state: present
     policy_json: "{{ lookup('template', 'bamboo_s3_push.json') }}"
+
+- name: Create ECSDeployer role
+  iam:
+    region: "{{ region }}"
+    profile: "{{ profile|default(omit) }}"
+    iam_type: role
+    name: ECSDeployer
+    trust_policy: "{{ lookup('template', 'bamboo-trust-policy.json') }}"
+    state: present
+
+- name: Assign ECSDeployer policy to role
+  iam_policy:
+    region: "{{ region }}"
+    profile: "{{ profile|default(omit) }}"
+    iam_type: role
+    iam_name: "ECSDeployer"
+    policy_name: "ECSDeployer"
+    state: present
+    policy_json: "{{ lookup('template', 'ECSDeployer.json') }}"
