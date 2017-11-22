@@ -7,6 +7,9 @@ EnvironmentFile=/etc/default/bamboo-agent
 ExecStart=/usr/bin/java -jar $BAMBOO_JAR $BAMBOO_URL -t $BAMBOO_TOKEN
 ExecStop=/usr/bin/pkill -f $BAMBOO_JAR
 User=bamboo
+RestartSec=60
+Restart=always
+StartLimitInterval=0
 
 [Install]
 WantedBy=multi-user.target
