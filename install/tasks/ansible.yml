@@ -13,10 +13,10 @@
     mode: 0700
     recurse: true
 
-- name: copy vault file
+- name: copy vault files
   copy:
-    src: ~/.ansible/vault/password/xvt-dpe-infrastructure
-    dest: ~bamboo/.ansible/vault/password/xvt-dpe-infrastructure
+    src: ~/.ansible/vault/password/{{ bamboo_vault_file }}
+    dest: ~bamboo/.ansible/vault/password/{{ bamboo_vault_file }}
     owner: bamboo
     group: bamboo
     mode: 0600

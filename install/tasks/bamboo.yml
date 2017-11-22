@@ -40,7 +40,7 @@
     group: bamboo
 
 - name: create bamboo capabilities file
-  copy:
+  template:
     src: bamboo-capabilities.properties
     dest: /home/bamboo/bamboo-agent-home/bin/bamboo-capabilities.properties
     owner: bamboo
