@@ -2,6 +2,24 @@
   "Version": "2012-10-17",
   "Statement": [
     {
+        "Sid": "Stmt1507791674000",
+        "Effect": "Allow",
+        "Action": [
+            "sns:Publish"
+        ],
+        "Resource": [
+            "arn:aws:sns:{{ region }}:{{ aws_account_id }}:{{ drupal_finalise_sns_topic_name }}"
+        ]
+    },
+    {
+        "Sid": "Stmt1507791674001",
+        "Effect": "Allow",
+        "Action": [
+            "sns:ListTopics"
+        ],
+        "Resource": "*"
+    },
+    {
       "Action": "ec2:*",
       "Effect": "Allow",
       "Resource": "*"
