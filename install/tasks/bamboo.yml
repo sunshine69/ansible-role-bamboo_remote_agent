@@ -2,6 +2,7 @@
   apt:
     name: "{{ item }}"
     state: present
+    update_cache: yes
   with_items: "{{ bamboo_apt_packages }}"
 
 - name: create bamboo user
