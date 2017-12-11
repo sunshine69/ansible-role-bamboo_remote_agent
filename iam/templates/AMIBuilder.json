@@ -1,6 +1,7 @@
 {
   "Version": "2012-10-17",
   "Statement": [
+{% if publish_topic_names %}
     {
         "Sid": "Stmt1507791674000",
         "Effect": "Allow",
@@ -8,9 +9,12 @@
             "sns:Publish"
         ],
         "Resource": [
-            "arn:aws:sns:{{ region }}:{{ aws_account_id }}:{{ drupal_finalise_sns_topic_name }}"
+{% for topic in publish_topic_names %}
+            "arn:aws:sns:{{ region }}:{{ aws_account_id }}:{{ topic }}"{{ '' if loop.last else ',' }}
+{% endfor %}
         ]
     },
+{% endif %}
     {
         "Sid": "Stmt1507791674001",
         "Effect": "Allow",
