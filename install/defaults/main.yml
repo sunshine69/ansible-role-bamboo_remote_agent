@@ -10,3 +10,14 @@ bamboo_apt_packages:
   - python3-pip
   - python3-dev
   - libssl-dev
+
+# This will deploy the capabilities.property files to configure the agent cap.
+# See
+# https://confluence.atlassian.com/bamboo/configuring-remote-agent-capabilities-using-bamboo-capabilities-properties-289276849.html
+bamboo_agent_capabilities: |
+  {{ cross_account_capability }}=yes
+  Bitbucket\ Key=yes
+  system.builder.command.Ansible=/usr/bin/ansible
+  system.operating.system=Linux
+  {{ bamboo_agent_extra_capabilities|default('') }}
+
