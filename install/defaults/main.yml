@@ -15,7 +15,7 @@ bamboo_apt_packages:
 # See
 # https://confluence.atlassian.com/bamboo/configuring-remote-agent-capabilities-using-bamboo-capabilities-properties-289276849.html
 bamboo_agent_capabilities: |
-  {{ cross_account_capability }}=yes
+  {{ cross_account_capability + '=yes' if cross_account_capability is defined and cross_account_capability else '' }}
   Bitbucket\ Key=yes
   system.builder.command.Ansible=/usr/bin/ansible
   system.operating.system=Linux
