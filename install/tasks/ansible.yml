@@ -4,6 +4,11 @@
     state: present
     version: "{{ bamboo_ansible_version }}"
 
+- name: install pywinrm
+  pip:
+    name: pywinrm
+    state: present
+
 - name: make vault directory
   file:
     name: ~bamboo/.ansible/vault/password
