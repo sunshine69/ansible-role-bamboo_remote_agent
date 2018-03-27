@@ -1,3 +1,12 @@
+- name: Download nodejs repo setup script
+  get_url:
+    url: "{{ nodejs_repo_setup_script_url }}"
+    dest: /tmp/ansible-nodejs-repo-setup.sh
+    mode: 0755
+
+- name: Run nodejs repository update
+  shell: "/tmp/ansible-nodejs-repo-setup.sh"
+
 - name: install bamboo agent extra packages
   apt:
     name: "{{ item }}"

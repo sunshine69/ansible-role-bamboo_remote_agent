@@ -1,12 +1,14 @@
 bamboo_jar: atlassian-bamboo-agent-installer-{{ bamboo_agent_version}}.jar
 bamboo_ansible_version: "2.4.1"
+
+nodejs_major_lts_version: 8
+nodejs_repo_setup_script_url: "https://deb.nodesource.com/setup_{{ nodejs_major_lts_version }}.x"
+
 bamboo_apt_packages:
   - zip
   - libyaml-dev
   - python-dev
   - nodejs
-  - nodejs-legacy
-  - npm
   - python3-pip
   - python3-dev
   - libssl-dev
