@@ -28,6 +28,8 @@
         "iam:ListRolePolicies",
         "iam:ListGroups",
         "iam:ListUsers",
+        "logs:DescribeLogGroups",
+        "logs:CreateLogGroups",
         "iam:PassRole"
       ],
       "Resource": "*",
