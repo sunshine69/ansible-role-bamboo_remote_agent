@@ -1,3 +1,4 @@
+{# To allow s3 sync we need ListAllMyBuckets and PutObjectAcl,PutObject,ListBucket for each bucket #}
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -5,16 +6,26 @@
       "Effect": "Allow",
       "Action": [
         "s3:PutObject",
+        "s3:PutObjectAcl",
+        "s3:ListBucket",
         "s3:GetObject"
       ],
       "Resource": [
         "arn:aws:s3:::{{ s3_buckets['c-infra-build'].name}}/*",
         "arn:aws:s3:::{{ s3_buckets['edge-lambda'].name}}/*"
+{%- for bucket_key_name in bucket_allowed_list|default([]) -%}
+{%- if loop.first -%},{%- endif -%}
+        "arn:aws:s3:::{{ s3_buckets[bucket_key_name].name}}/*",
+        "arn:aws:s3:::{{ s3_buckets[bucket_key_name].name}}{% if not loop.last %},{%- endif -%}
+{%- endfor -%}
         ]
     },
     {
       "Effect": "Allow",
-      "Action": "lambda:UpdateFunctionCode",
+      "Action": [ 
+        "lambda:UpdateFunctionCode",
+        "s3:ListAllMyBuckets"
+      ],  
       "Resource": "*"
     }
   ]
