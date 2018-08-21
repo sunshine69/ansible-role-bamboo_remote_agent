@@ -14,7 +14,7 @@
         "ecs:List*",
         "ecs:RegisterTaskDefinition",
         "ecs:RunTask",
-        "ecs:UpdateService",
+        "ecs:UpdateService", "ecs:DeleteService",
         "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
         "elasticloadbalancing:DeregisterTargets",
         "elasticloadbalancing:Describe*",
