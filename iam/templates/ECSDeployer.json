@@ -7,6 +7,7 @@
         "application-autoscaling:PutScalingPolicy",
         "application-autoscaling:DeleteScalingPolicy",
         "application-autoscaling:RegisterScalableTarget",
+        "autoscaling:DescribeAutoScalingGroups",
         "cloudwatch:DescribeAlarms",
         "cloudwatch:PutMetricAlarm",
         "ecs:CreateService",
