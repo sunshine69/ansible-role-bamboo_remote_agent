@@ -8,6 +8,8 @@
         "application-autoscaling:DeleteScalingPolicy",
         "application-autoscaling:RegisterScalableTarget",
         "autoscaling:DescribeAutoScalingGroups",
+        "autoscaling:UpdateAutoScalingGroup",
+        "autoscaling:DeleteAutoScalingGroup",
         "cloudwatch:DescribeAlarms",
         "cloudwatch:PutMetricAlarm",
         "ecs:CreateService",
