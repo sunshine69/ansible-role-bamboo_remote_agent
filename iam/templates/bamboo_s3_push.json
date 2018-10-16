@@ -12,7 +12,9 @@
       ],
       "Resource": [
         "arn:aws:s3:::{{ s3_buckets['c-infra-build'].name}}/*",
-        "arn:aws:s3:::{{ s3_buckets['edge-lambda'].name}}/*"
+{%- if 'edge-lambda' in s3_buckets -%}
+        "arn:aws:s3:::{{ s3_buckets['edge-lambda'].name}}/*",
+{%- endif -%}        
 {%- for bucket_key_name in bucket_allowed_list|default([]) -%}
 {%- if loop.first -%},{%- endif -%}
         "arn:aws:s3:::{{ s3_buckets[bucket_key_name].name}}/*",
