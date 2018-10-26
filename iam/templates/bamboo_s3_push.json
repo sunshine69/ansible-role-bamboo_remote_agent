@@ -11,12 +11,11 @@
         "s3:GetObject"
       ],
       "Resource": [
-        "arn:aws:s3:::{{ s3_buckets['c-infra-build'].name}}/*",
-        "arn:aws:s3:::{{ s3_buckets['edge-lambda'].name}}/*"
+        "arn:aws:s3:::{{ s3_buckets['c-infra-build'].name}}/*"
 {%- for bucket_key_name in bucket_allowed_list|default([]) -%}
 {%- if loop.first -%},{%- endif -%}
         "arn:aws:s3:::{{ s3_buckets[bucket_key_name].name}}/*",
-        "arn:aws:s3:::{{ s3_buckets[bucket_key_name].name}}{% if not loop.last %},{%- endif -%}
+        "arn:aws:s3:::{{ s3_buckets[bucket_key_name].name}}"{% if not loop.last %},{%- endif -%}
 {%- endfor -%}
         ]
     },

@@ -31,6 +31,7 @@
         "iam:ListRolePolicies",
         "iam:ListGroups",
         "iam:ListUsers",
+        "iam:CreateServiceLinkedRole",
         "logs:DescribeLogGroups",
         "logs:CreateLogGroups",
         "iam:PassRole"
